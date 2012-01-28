@@ -8,9 +8,12 @@ namespace AMEEInExcel
 {
     public partial class MainRibbon
     {
+        public static MainRibbon Instance;
+
         private void MainRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-
+            Instance = this;
+            versionLabel.Label = ThisAddIn.Instance.Version; 
         }
 
         private void findButton_Click(object sender, RibbonControlEventArgs e)

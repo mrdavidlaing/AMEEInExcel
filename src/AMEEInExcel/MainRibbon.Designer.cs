@@ -38,14 +38,18 @@
             this.group1 = this.Factory.CreateRibbonGroup();
             this.findButton = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
+            this.versionLabel = this.Factory.CreateRibbonLabel();
+            this.group3 = this.Factory.CreateRibbonGroup();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
+            this.group3.SuspendLayout();
             // 
             // tab1
             // 
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
             this.tab1.Groups.Add(this.group1);
             this.tab1.Groups.Add(this.group2);
+            this.tab1.Groups.Add(this.group3);
             this.tab1.KeyTip = "AM";
             this.tab1.Label = "AMEE";
             this.tab1.Name = "tab1";
@@ -68,6 +72,17 @@
             this.group2.Label = "AMEEconnect";
             this.group2.Name = "group2";
             // 
+            // versionLabel
+            // 
+            this.versionLabel.Label = "v0.0.0.0";
+            this.versionLabel.Name = "versionLable";
+            // 
+            // group3
+            // 
+            this.group3.Items.Add(this.versionLabel);
+            this.group3.Label = "group3";
+            this.group3.Name = "group3";
+            // 
             // MainRibbon
             // 
             this.Name = "MainRibbon";
@@ -78,6 +93,8 @@
             this.tab1.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
+            this.group3.ResumeLayout(false);
+            this.group3.PerformLayout();
 
         }
 
@@ -87,6 +104,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton findButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonLabel versionLabel;
     }
 
     partial class ThisRibbonCollection

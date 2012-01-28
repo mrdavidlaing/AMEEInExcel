@@ -8,11 +8,18 @@ using AMEEClient.Model;
 
 namespace AMEEInExcel.Core
 {
-    public class TransportDefra
+    public class AMEEConnector
     {
         private const string AmeeUrl = "https://stage.amee.com";
         private const string AmeeUserName = "jsonclient";
         private const string AmeePassword = "bktnkaq4";
+
+        public DataItemResponse GetDataItem(string path, string uid)
+        {
+            var client = new Client(new Uri(AmeeUrl), AmeeUserName, AmeePassword);
+
+            return client.GetDataItem(path, uid);
+        }
 
 
         // transport/defra/passenger/flight

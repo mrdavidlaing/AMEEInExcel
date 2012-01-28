@@ -30,6 +30,11 @@
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <DefineConstants>VSTO40</DefineConstants>
     <IsWebBootstrapper>False</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <VSTO_TrustAssembliesLocation>true</VSTO_TrustAssembliesLocation>
+    <UpgradeBackupLocation />
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>..\_setup\</PublishUrl>
     <InstallUrl />
@@ -37,12 +42,12 @@
     <ApplicationVersion>0.0.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
-    <UpdateInterval>7</UpdateInterval>
+    <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <ProductName>AMEEInExcel</ProductName>
-    <PublisherName />
-    <SupportUrl />
-    <FriendlyName>AMEEInExcel</FriendlyName>
+    <ProductName>AMEE in Excel</ProductName>
+    <PublisherName>David Laing</PublisherName>
+    <SupportUrl>https://github.com/mrdavidlaing/AMEEInExcel</SupportUrl>
+    <FriendlyName>AMEE in Excel</FriendlyName>
     <OfficeApplicationDescription />
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
@@ -60,7 +65,17 @@
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Office.PIARedist.2007">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Office 2007 Primary Interop Assemblies</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
+      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
       <Visible>False</Visible>
@@ -148,11 +163,13 @@
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="AMEEClient.CS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="ExcelDna.Integration">
       <HintPath>..\packages\Excel-DNA.0.29\lib\ExcelDna.Integration.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using AMEEInExcel.Core;
 
 namespace AMEEInExcel
 {
@@ -10,12 +11,13 @@ namespace AMEEInExcel
 
         public object GetDataItem(string workbookName, string path, string uid)
         {
+            return new AMEEConnector().GetDataItem(path, uid);
 //            var handler = ThisAddIn.Instance.GetHandler(workbookName);
 //            if (handler == null)
 //                return null;
 //            var res = handler.GetCurrentPrice(callerRange, marketId, property);
 //            return res;
-            return "TODO:- Make this work :)";
+//            return "TODO:- Make this work :)";
         }
 
       

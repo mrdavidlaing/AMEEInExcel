@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Deployment.Application;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -32,8 +33,9 @@ namespace AMEEInExcel
 
             // switch to our ribbon tab
             Application.SendKeys("%");
-            Application.SendKeys("GT {ESC}");
+            Application.SendKeys("AM {ESC}");
 #endif
+
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
@@ -46,6 +48,24 @@ namespace AMEEInExcel
             location = (new Uri(location)).LocalPath;
             var res = Path.GetDirectoryName(location) + "\\";
             return res;
+        }
+
+        public string Version
+        {
+            get
+            {
+                try
+                {
+                    var version = ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                    return string.Format("v{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build,
+                        version.Revision);
+                }
+                catch (InvalidDeploymentException)
+                {
+                    var res = string.Format("v{0}D", Assembly.GetCallingAssembly().GetName().Version);
+                    return res;
+                }
+            }
         }
 
         void InitXllAddin()
