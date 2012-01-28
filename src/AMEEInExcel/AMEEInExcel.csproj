@@ -29,6 +29,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <DefineConstants>VSTO40</DefineConstants>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>..\_setup\</PublishUrl>
     <InstallUrl />
@@ -38,7 +39,6 @@
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
-    <IsWebBootstrapper>False</IsWebBootstrapper>
     <ProductName>AMEEInExcel</ProductName>
     <PublisherName />
     <SupportUrl />
@@ -148,6 +148,9 @@
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="ExcelDna.Integration">
+      <HintPath>..\packages\Excel-DNA.0.29\lib\ExcelDna.Integration.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -194,6 +197,15 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="AMEEdiscoverForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AMEEdiscoverForm.Designer.cs">
+      <DependentUpon>AMEEdiscoverForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppDomainUtil.cs" />
+    <Compile Include="CrossDomain.cs" />
+    <Compile Include="ExcelDna\Files.Designer.cs" />
     <Compile Include="MainRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -203,6 +215,12 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Udf.cs" />
+    <Compile Include="UdfDispatcher.cs" />
+    <EmbeddedResource Include="AMEEdiscoverForm.resx">
+      <DependentUpon>AMEEdiscoverForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcelDna\Files.resx" />
     <EmbeddedResource Include="MainRibbon.resx">
       <DependentUpon>MainRibbon.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,6 +234,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="AMEEInExcel_TemporaryKey.pfx" />
+    <None Include="DebugTest.xlsm" />
+    <None Include="ExcelDna\AMEEInExcel.dna" />
+    <None Include="ExcelDna\AMEEInExcel.xll" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -240,6 +262,17 @@
       <Project>{FFC03A50-E8AF-456A-8C20-D6B0F54719DC}</Project>
       <Name>AMEEInExcel.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="mscoree">
+      <Guid>{5477469E-83B1-11D2-8B49-00A0C9B7C9C4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

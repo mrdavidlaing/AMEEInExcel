@@ -27,14 +27,12 @@ namespace AMEEInExcel.Core
         /// http://www.amee.com/developer/docs/ch03.php
         /// 
         /// </summary>
-        public CalculateResponse GetEmissionFactors()
+        /// <param name="path"></param>
+        public CalculateResponse GetEmissionFactors(string path)
         {
-
             var client = new Client(new Uri(AmeeUrl), AmeeUserName, AmeePassword);
 
-
             // Performing Drilldowns 
-            const string path = "transport/defra/fuel";
 
             // get choices for transport/defra/fuel
             DrillDownResponse r = client.GetDrillDown(path);

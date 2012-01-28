@@ -13,7 +13,7 @@ namespace AMEEInExcel.Core.UnitTests
         [Test]
         public void Home_Developer_Documentation_GetEmissionFactors()
         {
-            var calc = new TransportDefra().GetEmissionFactors();
+            var calc = new TransportDefra().GetEmissionFactors("transport/defra/fuel");
 
             Assert.AreEqual("1155.8500000000001", calc.totalAmount.Value);
 

@@ -12,5 +12,11 @@ namespace AMEEInExcel
         {
 
         }
+
+        private void findButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            var f = new AMEEdiscoverForm();
+            f.ShowDialog();
+        }
     }
 }
