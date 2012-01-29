@@ -10,15 +10,43 @@ namespace AMEEInExcel.Core
 {
     public class AMEEConnector
     {
+        private Client _client;
         private const string AmeeUrl = "https://stage.amee.com";
         private const string AmeeUserName = "jsonclient";
         private const string AmeePassword = "bktnkaq4";
 
+        public AMEEConnector()
+        {
+            _client = new Client(new Uri(AmeeUrl), AmeeUserName, AmeePassword);
+        }
+
         public DataItemResponse GetDataItem(string path, string uid)
         {
-            var client = new Client(new Uri(AmeeUrl), AmeeUserName, AmeePassword);
+            DrillDownResponse r = _client.GetDrillDown(path);
+            var dataItemResponse = _client.GetDataItem(path, uid);
+            return dataItemResponse;
+        }
 
-            return client.GetDataItem(path, uid);
+        public string GetDataItemLabel(string path, string uid)
+        {
+            var dataItemResponse = _client.GetDataItem(path, uid);
+            return dataItemResponse.DataItem.Label;
+        }
+
+        public string GetDataItemValue(string path, string uid, string valuePath)
+        {
+            var dataItemResponse = _client.GetDataItem(path, uid);
+            var dataItemValue = dataItemResponse.DataItem.ItemValues.First(v => v.ItemValueDefinition.Path == valuePath).Value;
+            return dataItemValue;
+        }
+
+        public CalculateResponse Calculate(string path, string dataItemUid, string volume, string representation)
+        {
+            var profile = _client.CreateProfile();
+
+            return _client.Calculate(profile.Profile.Uid, path, new ValueItem("dataItemUid", dataItemUid), 
+                new ValueItem("volume", volume), 
+                new ValueItem("representation", representation));
         }
 
 

@@ -9,7 +9,7 @@ namespace AMEEInExcel
     public static class Udf
     {
         [ExcelFunction(Category="AMEE", Description = "Get AMEE DataItem")]
-        public static object DATAITEM(string path, string uid)
+        public static object AMEE_DATAITEM(string path, string uid)
         {
             try
             {
@@ -25,6 +25,62 @@ namespace AMEEInExcel
                 return exc.Message;
             }
         }
+
+        [ExcelFunction(Category = "AMEE", Description = "Get AMEE DataItem Label")]
+        public static object AMEE_DATAITEM_LABEL(string path, string uid)
+        {
+            try
+            {
+                var defaultValue = string.Format("{0}->{1}", path, uid);
+                var workbookName = GetCallingWorkbookName();
+
+                var res = UdfDispatcher.Get().GetDataItemLabel(workbookName, path, uid);
+                return res ?? defaultValue;
+            }
+            catch (Exception exc)
+            {
+                UdfDispatcher.Log(exc);
+                return exc.Message;
+            }
+        }
+
+        [ExcelFunction(Category = "AMEE", Description = "Get AMEE DataItem Value")]
+        public static object AMEE_DATAITEM_VALUE(string path, string uid, string valuePath)
+        {
+            try
+            {
+                var defaultValue = string.Format("{0}->{1}", path, uid);
+                var workbookName = GetCallingWorkbookName();
+
+                var res = UdfDispatcher.Get().GetDataItemValue(workbookName, path, uid, valuePath);
+                return res ?? defaultValue;
+            }
+            catch (Exception exc)
+            {
+                UdfDispatcher.Log(exc);
+                return exc.Message;
+            }
+        }
+
+        [ExcelFunction(Category = "AMEE", Description = "Perform AMEE calculation")]
+        public static object AMEE_CALC(string path, string dataItemUid, string volume, string representation)
+        {
+            try
+            {
+                var defaultValue = string.Format("Calc({0}->{1})", path, dataItemUid);
+                var workbookName = GetCallingWorkbookName();
+
+                var res = UdfDispatcher.Get().Calculate(workbookName, path, dataItemUid, volume, representation);
+                return res ?? defaultValue;
+            }
+            catch (Exception exc)
+            {
+                UdfDispatcher.Log(exc);
+                return exc.Message;
+            }
+        }
+
+
 
         static string CallingSheetName()
         {

@@ -7,17 +7,27 @@ namespace AMEEInExcel
     public class UdfDispatcher : MarshalByRefObject
     {
         private static UdfDispatcher _dispatcher;
+        private static AMEEConnector _ameeConnector = new AMEEConnector();
 //        private ILog _log;
 
         public object GetDataItem(string workbookName, string path, string uid)
         {
-            return new AMEEConnector().GetDataItem(path, uid);
-//            var handler = ThisAddIn.Instance.GetHandler(workbookName);
-//            if (handler == null)
-//                return null;
-//            var res = handler.GetCurrentPrice(callerRange, marketId, property);
-//            return res;
-//            return "TODO:- Make this work :)";
+            return _ameeConnector.GetDataItem(path, uid);
+        }
+
+        public string GetDataItemLabel(string workbookName, string path, string uid)
+        {
+            return _ameeConnector.GetDataItemLabel(path, uid);
+        }
+
+        public string GetDataItemValue(string workbookName, string path, string uid, string valuePath)
+        {
+            return _ameeConnector.GetDataItemValue(path, uid, valuePath);
+        }
+
+        public object Calculate(string workbookName, string path, string dataItemUid, string volume, string representation)
+        {
+            return _ameeConnector.Calculate(path, dataItemUid, volume, representation);
         }
 
       
