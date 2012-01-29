@@ -8,24 +8,6 @@ namespace AMEEInExcel
 {
     public static class Udf
     {
-        [ExcelFunction(Category="AMEE", Description = "Get AMEE DataItem")]
-        public static object AMEE_DATAITEM(string path, string uid)
-        {
-            try
-            {
-                var defaultValue = string.Format("{0}->{1}", path, uid);
-                var workbookName = GetCallingWorkbookName();
-
-                var res = UdfDispatcher.Get().GetDataItem(workbookName, path, uid);
-                return res ?? defaultValue;
-            }
-            catch (Exception exc)
-            {
-                UdfDispatcher.Log(exc);
-                return exc.Message;
-            }
-        }
-
         [ExcelFunction(Category = "AMEE", Description = "Get AMEE DataItem Label")]
         public static object AMEE_DATAITEM_LABEL(string path, string uid)
         {
@@ -63,14 +45,14 @@ namespace AMEEInExcel
         }
 
         [ExcelFunction(Category = "AMEE", Description = "Perform AMEE calculation")]
-        public static object AMEE_CALC(string path, string dataItemUid, string volume, string representation)
+        public static object AMEE_CALC(string path, string dataItemUid, string amountType, string argName, string argValue)
         {
             try
             {
                 var defaultValue = string.Format("Calc({0}->{1})", path, dataItemUid);
                 var workbookName = GetCallingWorkbookName();
 
-                var res = UdfDispatcher.Get().Calculate(workbookName, path, dataItemUid, volume, representation);
+                var res = UdfDispatcher.Get().Calculate(workbookName, path, dataItemUid, amountType, argName, argValue);
                 return res ?? defaultValue;
             }
             catch (Exception exc)

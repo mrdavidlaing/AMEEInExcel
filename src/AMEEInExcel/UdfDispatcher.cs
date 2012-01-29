@@ -10,11 +10,6 @@ namespace AMEEInExcel
         private static AMEEConnector _ameeConnector = new AMEEConnector();
 //        private ILog _log;
 
-        public object GetDataItem(string workbookName, string path, string uid)
-        {
-            return _ameeConnector.GetDataItem(path, uid);
-        }
-
         public string GetDataItemLabel(string workbookName, string path, string uid)
         {
             return _ameeConnector.GetDataItemLabel(path, uid);
@@ -25,9 +20,9 @@ namespace AMEEInExcel
             return _ameeConnector.GetDataItemValue(path, uid, valuePath);
         }
 
-        public object Calculate(string workbookName, string path, string dataItemUid, string volume, string representation)
+        public object Calculate(string workbookName, string path, string dataItemUid, string amountType, string argName, string argValue)
         {
-            return _ameeConnector.Calculate(path, dataItemUid, volume, representation);
+            return _ameeConnector.Calculate(path, dataItemUid, amountType, argName, argValue);
         }
 
       
