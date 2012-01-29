@@ -1,6 +1,6 @@
 ﻿namespace AMEEInExcel
 {
-    partial class AMEEdiscoverForm
+    partial class UIDFinderForm
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(871, 579);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://discover.amee.com/", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("http://try-amee.heroku.com/?url=stage.amee.com/data/transport/defra/fuel", System.UriKind.Absolute);
             // 
             // panel1
             // 
@@ -62,7 +62,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Grab path";
+            this.button1.Text = "Grab UID";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // AMEEdiscoverForm
@@ -72,9 +72,9 @@
             this.ClientSize = new System.Drawing.Size(871, 622);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.webBrowser1);
-            this.Name = "AMEEdiscoverForm";
-            this.Text = "AMEEdiscover";
-            this.Load += new System.EventHandler(this.AMEEdiscoverForm_Load);
+            this.Name = "UIDFinderForm";
+            this.Text = "UID discover";
+            this.Load += new System.EventHandler(this.UIDFinderForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

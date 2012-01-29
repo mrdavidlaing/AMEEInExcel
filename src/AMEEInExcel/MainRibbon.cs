@@ -13,12 +13,18 @@ namespace AMEEInExcel
         private void MainRibbon_Load(object sender, RibbonUIEventArgs e)
         {
             Instance = this;
-            versionLabel.Label = ThisAddIn.Instance.Version; 
+           // versionLabel.Label = ThisAddIn.Instance.Version; 
         }
 
         private void findButton_Click(object sender, RibbonControlEventArgs e)
         {
             var f = new AMEEdiscoverForm();
+            f.ShowDialog();
+        }
+
+        private void findUIDButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            var f = new UIDFinderForm();
             f.ShowDialog();
         }
     }

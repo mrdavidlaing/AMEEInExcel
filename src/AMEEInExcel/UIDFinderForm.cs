@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace AMEEInExcel
 {
-    public partial class AMEEdiscoverForm : Form
+    public partial class UIDFinderForm : Form
     {
-        public AMEEdiscoverForm()
+        public UIDFinderForm()
         {
             InitializeComponent();
         }
 
-        private void AMEEdiscoverForm_Load(object sender, EventArgs e)
+        private void UIDFinderForm_Load(object sender, EventArgs e)
         {
 
         }
