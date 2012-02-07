@@ -7,7 +7,7 @@ Requirements:
 * Excel 2010
 * Windows 7 (might work in Windows XP)
 
-1.  Install the *AMEE in Excel* adding - http://code.labs.cityindex.com/AMEEInExcel/_setup/setup.exe
+1.  Install the *AMEE in Excel* adding - http://code.labs.cityindex.com/AMEEInExcel
 1.  Use the AMEE_* functions to pull data & calculations from AMEE
 1.  Watch [this video overview](https://cityindex.viewscreencasts.com/7313b30ed11a47ffbe2fc3426a5114ab)
 
